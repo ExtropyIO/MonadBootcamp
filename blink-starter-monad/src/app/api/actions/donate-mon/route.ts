@@ -2,39 +2,32 @@ import { ActionGetResponse, ActionPostResponse } from "@solana/actions";
 import { serialize } from "wagmi";
 import { parseEther } from "viem";
 
-  
-
 // CAIP-2 format for Monad
-
 const blockchain = "eip155:10143";
-// Wallet address that will receive the tips  CHANGE THIS !!!!
-const donationWallet = "0xF8287F821B5038E10777819666CC20a6819b96d2"; 
-  
+
+// Wallet address that will receive the tips
+const donationWallet = "0xd2135CfB216b74109775236E36d4b433F1DF507B"; // wevm.eth multichain wallet
 
 // Create headers with CAIP blockchain ID
 const headers = {
-"Access-Control-Allow-Origin": "*",
-"Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-"Access-Control-Allow-Headers":
-"Content-Type, x-blockchain-ids, x-action-version",
-"Access-Control-Expose-Headers": "x-blockchain-ids, x-action-version",
-"Content-Type": "application/json",
-"x-blockchain-ids": blockchain,
-"x-action-version": "2.4",
-
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers":
+    "Content-Type, x-blockchain-ids, x-action-version",
+  "Access-Control-Expose-Headers": "x-blockchain-ids, x-action-version",
+  "Content-Type": "application/json",
+  "x-blockchain-ids": blockchain,
+  "x-action-version": "2.4",
 };
-
-  
 
 // OPTIONS endpoint is required for CORS preflight requests
-
 // Your Blink won't render if you don't add this
-
 export const OPTIONS = async () => {
-
-return new Response(null, { headers });
-
+  return new Response(null, { headers });
 };
+  
+
+
 
 // GET endpoint returns the Blink metadata (JSON) and UI configuration
 export const GET = async (req: Request) => {
