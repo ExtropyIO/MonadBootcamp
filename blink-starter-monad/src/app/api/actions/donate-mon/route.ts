@@ -1,3 +1,5 @@
+
+
 import { ActionGetResponse, ActionPostResponse } from "@solana/actions";
 import { serialize } from "wagmi";
 import { parseEther } from "viem";
@@ -13,11 +15,10 @@ const headers = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers":
-    "Content-Type, x-blockchain-ids, x-action-version",
-  "Access-Control-Expose-Headers": "x-blockchain-ids, x-action-version",
+  "Content-Type, x-blockchain-ids, x-action-version",
   "Content-Type": "application/json",
   "x-blockchain-ids": blockchain,
-  "x-action-version": "2.4",
+  "x-action-version": "2.0",
 };
 
 // OPTIONS endpoint is required for CORS preflight requests
