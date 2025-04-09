@@ -7,7 +7,7 @@ export const monad = /*#__PURE__*/ defineChain({
   nativeCurrency: { name: "Monad", symbol: "MON", decimals: 18 },
   rpcUrls: {
     default: {
-      http: ["testnet-rpc.monad.xyz/"],
+      http: ["https://testnet-rpc.monad.xyz/"],
     },
   },
   testnet: true,
