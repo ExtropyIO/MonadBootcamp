@@ -90,3 +90,51 @@ export const GET = async (req: Request) => {
     });
   };
   
+
+  // POST endpoint handles the actual transaction creation  
+export const POST = async (req: Request) => {  
+  try {  
+    
+    // Step 1  
+    // Extract amount from URL  
+    const url = new URL(req.url);  
+    const amount = url.searchParams.get("amount");  
+      
+    if (!amount) {  
+      throw new Error("Amount is required");  
+    }
+  
+  
+    // Build the transaction  
+    const transaction = {  
+    to: donationWallet,  
+    value: parseEther(amount).toString(),  
+    chainId: 10143,  
+    };  
+      
+    const transactionJson = serialize(transaction);
+  
+    // Build ActionPostResponse  
+    const response: ActionPostResponse = {  
+    type: "transaction",  
+    transaction: transactionJson,  
+    message: "Donate MON",  
+    };  
+      
+    // Return the response with proper headers  
+    return new Response(JSON.stringify(response), {  
+    status: 200,  
+    headers,  
+    });
+    
+  
+  
+    } catch (error) {
+      // Log and return an error response
+      console.error("Error processing request:", error);
+      return new Response(JSON.stringify({ error: "Internal server error" }), {
+        status: 500,
+        headers,
+      });
+    }
+  };
